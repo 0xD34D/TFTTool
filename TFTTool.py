@@ -422,6 +422,7 @@ class TFTFile:
         "TJC1060X570_011": 0xb3fbd54d,
         "TJC8060X580_011": 0xc95c8177,
         "TJC1060X5A1_011": 0x3cdf3329,
+        "TJC3224T132_011": 0x92930F5E,
     }
     _models = list(_modelXORs.keys())
     _modelCRCs = [Checksum().CRC(data=m.encode("ascii")) for m in _models]
@@ -470,31 +471,29 @@ class TFTFile:
         "start":   0xc8,
         "hasCRC":  True,
         "content": {
-            "static_usercode_address":      {"struct": "I", "val": 0},
-#            "unknown_app_vas_address":      {"struct": "I", "val": 0},
-#            "unknown_app_vas_count":        {"struct": "I", "val": 0},
-            "app_attributes_data_address":  {"struct": "I", "val": 0},
-            "ressources_files_address":     {"struct": "I", "val": 0},
-            "usercode_address":             {"struct": "I", "val": 0},
-            "unknown_pages_address":        {"struct": "I", "val": 0},
-            "unknown_objects_address":      {"struct": "I", "val": 0},
-            "pictures_address":             {"struct": "I", "val": 0},
-            "gmovs_address":                {"struct": "I", "val": 0},
-            "videos_address":               {"struct": "I", "val": 0},
-            "audios_address":               {"struct": "I", "val": 0},
-            "fonts_address":                {"struct": "I", "val": 0},
-            "unknown_maincode_binary":      {"struct": "I", "val": 0},
-            "pages_count":                  {"struct": "H", "val": 0},
-            "unknown_objects_count":        {"struct": "H", "val": 0},
-            "pictures_count":               {"struct": "H", "val": 0},
-            "gmovs_count":                  {"struct": "H", "val": 0},
-            "videos_count":                 {"struct": "H", "val": 0},
-            "audios_count":                 {"struct": "H", "val": 0},
-            "fonts_count":                  {"struct": "H", "val": 0},
-            "unknown_res1":                 {"struct": "H", "val": 0},
-            "unknown_encode":               {"struct": "B", "val": 0},
-            "unknown_res2":                 {"struct": "B", "val": 0},
-            "unknown_res3":                 {"struct": "H", "val": 0},
+            "static_usercode_address":      {"struct": "I", "val": 0}, # 0x0c8-0x0cb
+            "app_attributes_data_address":  {"struct": "I", "val": 0}, # 0x0cc-0x0cf
+            "ressources_files_address":     {"struct": "I", "val": 0}, # 0x0d0-0x0d3
+            "usercode_address":             {"struct": "I", "val": 0}, # 0x0d4-0x0d7
+            "unknown_pages_address":        {"struct": "I", "val": 0}, # 0x0d8-0x0db
+            "unknown_objects_address":      {"struct": "I", "val": 0}, # 0x0dc-0x0df
+            "pictures_address":             {"struct": "I", "val": 0}, # 0x0e0-0x0e3
+            "gmovs_address":                {"struct": "I", "val": 0}, # 0x0e4-0x0e7
+            "videos_address":               {"struct": "I", "val": 0}, # 0x0e8-0x0eb
+            "audios_address":               {"struct": "I", "val": 0}, # 0x0ec-0x0ef
+            "fonts_address":                {"struct": "I", "val": 0}, # 0x0f0-0x0f3
+            "unknown_maincode_binary":      {"struct": "I", "val": 0}, # 0x0f4-0x0f7
+            "pages_count":                  {"struct": "H", "val": 0}, # 0x0f8-0x0f9
+            "unknown_objects_count":        {"struct": "H", "val": 0}, # 0x0fa-0x0fb
+            "pictures_count":               {"struct": "H", "val": 0}, # 0x0fc-0x0fd
+            "gmovs_count":                  {"struct": "H", "val": 0}, # 0x0fe-0x0ff
+            "videos_count":                 {"struct": "H", "val": 0}, # 0x100-0x101
+            "audios_count":                 {"struct": "H", "val": 0}, # 0x102-0x103
+            "fonts_count":                  {"struct": "H", "val": 0}, # 0x104-0x105
+            "unknown_res1":                 {"struct": "H", "val": 0}, # 0x106-0x107
+            "unknown_encode":               {"struct": "B", "val": 0}, # 0x108-0x109
+            "unknown_res2":                 {"struct": "B", "val": 0}, # 0x10a-0x10b
+            "unknown_res3":                 {"struct": "H", "val": 0}, # 0x10c-0x10d
         },
     }
 
